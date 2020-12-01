@@ -3,6 +3,19 @@ version: 2.1
 orbs:
   win: circleci/windows@2.4.0
 
+commands:
+  release:
+    parameters:
+      target:
+        type: enum
+        enum: ['win10-x64', 'linux-x64', 'osx.10.14-x64']
+      steps:
+        - run:
+            command: dotnet publish -c Release -r << parameters.target >>
+            shell: cmd.exe
+        - store_artifacts:
+            path: src/fibo/bin/Release/netcoreapp3.1/<< parameters.target >>/publish
+
 jobs:
   build:
     executor: win/default
@@ -30,33 +43,24 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run:
-          command: dotnet publish -c Release -r win10-x64
-          shell: cmd.exe
-      - store_artifacts:
-          path: src/fibo/bin/Release/netcoreapp3.1/win10-x64/publish
+      - release:
+          target: win10-x64
   release-linux-x64:
     executor: win/default
     steps:
       - checkout
       - attach_workspace:
           at: .
-      - run:
-          command: dotnet publish -c Release -r linux-x64
-          shell: cmd.exe
-      - store_artifacts:
-          path: src/fibo/bin/Release/netcoreapp3.1/linux-x64/publish
+      - release:
+          target: linux-x64
   release-osx1014-x64:
     executor: win/default
     steps:
       - checkout
       - attach_workspace:
           at: .
-      - run:
-          command: dotnet publish -c Release -r osx.10.14-x64
-          shell: cmd.exe
-      - store_artifacts:
-          path: src/fibo/bin/Release/netcoreapp3.1/osx.10.14-x64/publish
+      - release:
+          target: osx.10.14-x64
   
 workflows:
   version: 2
