@@ -12,15 +12,13 @@ jobs:
           command: dotnet build
           shell: cmd.exe
       - persist_to_workspace:
-          root: /tmp/fibo
           paths:
             - src/ClassLibrary/bin
   test:
     executor: win/default
     steps:
       - checkout
-      - attach_workspace:
-          at: /tmp/fibo
+      - attach_workspace
       - run:
           command: dotnet test
           shell: cmd.exe
