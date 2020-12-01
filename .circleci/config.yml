@@ -12,13 +12,15 @@ jobs:
           command: dotnet build
           shell: cmd.exe
       - persist_to_workspace:
+          root: .
           paths:
             - src/ClassLibrary/bin
   test:
     executor: win/default
     steps:
       - checkout
-      - attach_workspace
+      - attach_workspace:
+          at: .
       - run:
           command: dotnet test
           shell: cmd.exe
