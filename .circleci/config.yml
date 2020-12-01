@@ -24,6 +24,17 @@ jobs:
       - run:
           command: dotnet test
           shell: cmd.exe
+  release-win:
+    executor: win/default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          command: dotnet publish -c Release -r win10-x64
+          shell: cmd.exe
+      - store_artifacts:
+          path: src/fibo/bin/Release/netcoreapp3.1/publish
   
 workflows:
   version: 2
@@ -33,3 +44,6 @@ workflows:
       - test:
           requires: 
             - build
+      - release:
+          requires:
+            - test
