@@ -9,12 +9,12 @@ commands:
       target:
         type: enum
         enum: ['win10-x64', 'linux-x64', 'osx.10.14-x64']
-      steps:
-        - run:
-            command: dotnet publish -c Release -r << parameters.target >>
-            shell: cmd.exe
-        - store_artifacts:
-            path: src/fibo/bin/Release/netcoreapp3.1/<< parameters.target >>/publish
+    steps:
+      - run:
+          command: dotnet publish -c Release -r << parameters.target >>
+          shell: cmd.exe
+      - store_artifacts:
+          path: src/fibo/bin/Release/netcoreapp3.1/<< parameters.target >>/publish
 
 jobs:
   build:
