@@ -46,7 +46,7 @@ jobs:
           shell: cmd.exe
       - store_artifacts:
           path: src/fibo/bin/Release/netcoreapp3.1/linux-x64/publish
-  release-osx.10.14-x64:
+  release-osx1014-x64:
     executor: win/default
     steps:
       - checkout
@@ -72,6 +72,6 @@ workflows:
       - release-linux-x64:
           requires:
             - test
-      - release-osx.10.14-x64:
+      - release-osx1014-x64:
           requires:
             - test
