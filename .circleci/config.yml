@@ -1,0 +1,28 @@
+version: 2.1
+
+orbs:
+  win: circleci/windows@2.4.0
+
+jobs:
+  build:
+    executor: win/default
+    steps:
+      - checkout
+      - run:
+          command: dotnet build
+          shell: cmd.exe
+  test:
+    executor: win/default
+    steps:
+      - run:
+          command: dotnet test
+          shell: cmd.exe
+  
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
+      - test:
+          requires: 
+            - build
