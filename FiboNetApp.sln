@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryTest", "test\Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fibo", "src\fibo\fibo.csproj", "{944877C7-4B0E-4DF1-9C6B-E3FDCCE8C21B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiboLibrary", "FiboLibrary\FiboLibrary.csproj", "{C55AE132-AE98-4591-9E93-D73ED5739BEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,18 @@ Global
 		{944877C7-4B0E-4DF1-9C6B-E3FDCCE8C21B}.Release|x64.Build.0 = Release|Any CPU
 		{944877C7-4B0E-4DF1-9C6B-E3FDCCE8C21B}.Release|x86.ActiveCfg = Release|Any CPU
 		{944877C7-4B0E-4DF1-9C6B-E3FDCCE8C21B}.Release|x86.Build.0 = Release|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Debug|x64.Build.0 = Debug|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Debug|x86.Build.0 = Debug|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Release|x64.ActiveCfg = Release|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Release|x64.Build.0 = Release|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Release|x86.ActiveCfg = Release|Any CPU
+		{C55AE132-AE98-4591-9E93-D73ED5739BEF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E14DA56B-13B7-493E-86D2-CB78EA85880B} = {C3106F6B-9D1C-4DAC-8E3A-394ADD262160}
