@@ -10,55 +10,55 @@ commands:
         type: enum
         enum: ['win10-x64', 'linux-x64', 'osx.10.14-x64']
     steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dotnet-packages-v3-{{ checksum "FiboLibraryTest/FiboLibraryTest.csproj" }}
       - run:
           command: dotnet publish -c Release -r << parameters.target >>
           shell: cmd.exe
       - store_artifacts:
-          path: src/fibo/bin/Release/netcoreapp3.1/<< parameters.target >>/publish
+          path: fibo/bin/Release/netcoreapp3.1/<< parameters.target >>/publish
 
 jobs:
   build:
     executor: win/default
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - dotnet-packages-v3-{{ checksum "FiboLibraryTest/FiboLibraryTest.csproj" }}
       - run:
           command: dotnet build
           shell: cmd.exe
-      - persist_to_workspace:
-          root: .
+      - save_cache:
           paths:
-            - src/ClassLibrary/bin
+              - C:¥Users¥circleci¥.nuget¥packages
+          key:
+            - dotnet-packages-v3-{{ checksum "FiboLibraryTest/FiboLibraryTest.csproj" }}
   test:
     executor: win/default
     steps:
       - checkout
-      - attach_workspace:
-          at: .
+      - restore_cache:
+          keys:
+            - dotnet-packages-v3-{{ checksum "FiboLibraryTest/FiboLibraryTest.csproj" }}
       - run:
           command: dotnet test
           shell: cmd.exe
   release-win10-x64:
     executor: win/default
     steps:
-      - checkout
-      - attach_workspace:
-          at: .
       - release:
           target: win10-x64
   release-linux-x64:
     executor: win/default
     steps:
-      - checkout
-      - attach_workspace:
-          at: .
       - release:
           target: linux-x64
   release-osx1014-x64:
     executor: win/default
     steps:
-      - checkout
-      - attach_workspace:
-          at: .
       - release:
           target: osx.10.14-x64
   
