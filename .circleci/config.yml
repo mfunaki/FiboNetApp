@@ -33,9 +33,8 @@ jobs:
           shell: cmd.exe
       - save_cache:
           paths:
-              - C:¥Users¥circleci¥.nuget¥packages
-          key:
-            - dotnet-packages-v3-{{ checksum "FiboLibraryTest/FiboLibraryTest.csproj" }}
+            - C:¥Users¥circleci¥.nuget¥packages
+          key: dotnet-packages-v3-{{ checksum "FiboLibraryTest/FiboLibraryTest.csproj" }}
   test:
     executor: win/default
     steps:
